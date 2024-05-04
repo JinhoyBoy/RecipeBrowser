@@ -43,7 +43,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                    
                 }
                 .onAppear {
                     viewModel.listentoRealtimeDatabase()

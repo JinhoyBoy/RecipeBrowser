@@ -21,6 +21,8 @@
 		1C62A3E82BE697C800D1EDFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1C62A3E72BE697C800D1EDFE /* GoogleService-Info.plist */; };
 		1C62A3EB2BE6AA3700D1EDFE /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62A3EA2BE6AA3700D1EDFE /* Recipe.swift */; };
 		1C62A3ED2BE6AB3200D1EDFE /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62A3EC2BE6AB3200D1EDFE /* RecipeViewModel.swift */; };
+		1C62A3F02BE6CB0300D1EDFE /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62A3EF2BE6CB0300D1EDFE /* SearchView.swift */; };
+		1C62A3F32BE6D69600D1EDFE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62A3F22BE6D69600D1EDFE /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,9 @@
 		1C62A3E72BE697C800D1EDFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1C62A3EA2BE6AA3700D1EDFE /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		1C62A3EC2BE6AB3200D1EDFE /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		1C62A3EF2BE6CB0300D1EDFE /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		1C62A3F12BE6CF5B00D1EDFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C62A3F22BE6D69600D1EDFE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,9 +77,10 @@
 		1C62A3C82BE694CC00D1EDFE /* RecipeBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				1C62A3E92BE6AA2500D1EDFE /* Model */,
+				1C62A3F12BE6CF5B00D1EDFE /* Info.plist */,
 				1C62A3C92BE694CC00D1EDFE /* RecipeBrowserApp.swift */,
-				1C62A3CB2BE694CC00D1EDFE /* ContentView.swift */,
+				1C62A3E92BE6AA2500D1EDFE /* Model */,
+				1C62A3EE2BE6CAE200D1EDFE /* Views */,
 				1C62A3CD2BE694CE00D1EDFE /* Assets.xcassets */,
 				1C62A3E72BE697C800D1EDFE /* GoogleService-Info.plist */,
 				1C62A3CF2BE694CE00D1EDFE /* Preview Content */,
@@ -104,6 +110,16 @@
 				1C62A3EC2BE6AB3200D1EDFE /* RecipeViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1C62A3EE2BE6CAE200D1EDFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1C62A3CB2BE694CC00D1EDFE /* ContentView.swift */,
+				1C62A3EF2BE6CB0300D1EDFE /* SearchView.swift */,
+				1C62A3F22BE6D69600D1EDFE /* MainView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +205,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C62A3F02BE6CB0300D1EDFE /* SearchView.swift in Sources */,
+				1C62A3F32BE6D69600D1EDFE /* MainView.swift in Sources */,
 				1C62A3ED2BE6AB3200D1EDFE /* RecipeViewModel.swift in Sources */,
 				1C62A3EB2BE6AA3700D1EDFE /* Recipe.swift in Sources */,
 				1C62A3CC2BE694CC00D1EDFE /* ContentView.swift in Sources */,
@@ -329,6 +347,7 @@
 				DEVELOPMENT_TEAM = 9F8D8U8J79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecipeBrowser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -359,6 +378,7 @@
 				DEVELOPMENT_TEAM = 9F8D8U8J79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RecipeBrowser/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
