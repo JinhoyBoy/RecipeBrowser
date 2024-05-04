@@ -9,30 +9,51 @@ import SwiftUI
 import FirebaseDatabase
 
 struct ContentView: View {
-    @State private var ref: DatabaseReference!
-    @State private var recipeName = ""
+    @StateObject private var viewModel = RecipeViewModel()
     var body: some View {
-        VStack {
-            Image(systemName: "carrot.fill")
-                .imageScale(.large)
-                .foregroundStyle(.orange)
-            Text(recipeName)
-        }
-        .onAppear{
-            ref = Database.database().reference()
-            ref.child("7000").child("Recipe Name").getData { error, snapshot in
-                    if let error = error {
-                        print("Error fetching data: \(error)")
-                    } else if let value = snapshot?.value as? String {
-                        let Name = value
-                        print("Recipe Name: \(Name)")
-                        recipeName = Name
-                    } else {
-                        print("Data is not in the expected format.")
+        NavigationStack {
+            ScrollViewReader { reader in
+                List(viewModel.recipes) { recipe in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(recipe.recipeName).font(.title3).bold()
+                            Text(recipe.author)
+                        }
+                        Spacer()
+                        AsyncImage(url: URL(string: recipe.photoURLs)) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                Rectangle()
+                                    .aspectRatio(1, contentMode: .fit)
+                                    .overlay(
+                                        image.resizable()
+                                            .resizable()
+                                            .scaledToFill()
+                                    )
+                                    .clipShape(RoundedRectangle(cornerRadius: 18.0))
+                                    .frame(width: 90, height: 90, alignment: .center)
+                            case .failure:
+                                Rectangle()
+                                    .foregroundStyle(.clear)
+                                    .frame(width: 90, height: 90, alignment: .center)
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
                     }
+                    
                 }
+                .onAppear {
+                    viewModel.listentoRealtimeDatabase()
+                }
+                .onDisappear {
+                    viewModel.stopListening()
+                }
+            }
+            .navigationTitle("Baking Browser")
         }
-        .padding()
     }
 }
 
