@@ -10,17 +10,24 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var viewModel = RecipeViewModel()
     @State private var selectedIngredients = [String]()
+    @State private var filterIngredients: Set = ["egg", "flour", "yeast"]
     @EnvironmentObject private var selection: Selection
-
     var body: some View {
         NavigationView {
             ScrollViewReader { reader in
-                List(viewModel.recipes) { recipe in
-                    RecipeRow(recipe: recipe)
-                }
+                List(viewModel.recipes.filter { recipe in
+                        containsFilterIngredients(recipe.ingredients)
+                    }) { recipe in
+                        RecipeRow(recipe: recipe)
+                    }
                 .onAppear {
                     viewModel.listentoRealtimeDatabase()
                     selectedIngredients = selection.ingredients
+                    if selectedIngredients.isEmpty{
+                        //Test value
+                    } else {
+                        filterIngredients = Set(selectedIngredients)
+                    }
                 }
                 .onDisappear {
                     viewModel.stopListening()
@@ -47,7 +54,12 @@ struct ContentView: View {
     private func removeIngredient(_ ingredient: String) {
         selection.ingredients = selection.ingredients.filter { $0 != ingredient }
         selectedIngredients.removeAll { $0 == ingredient }
+        filterIngredients = Set(selectedIngredients)
     }
+    private func containsFilterIngredients(_ ingredients: String) -> Bool {
+            let recipeIngredients = Set(ingredients.components(separatedBy: ","))
+            return filterIngredients.isSuperset(of: recipeIngredients)
+        }
 }
 
 struct RecipeRow: View {
