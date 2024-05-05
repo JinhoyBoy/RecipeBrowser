@@ -51,7 +51,7 @@ struct ContentView: View {
                     viewModel.stopListening()
                 }
             }
-            .navigationTitle("Baking Browser")
+            .navigationTitle("Recipe Browser")
         }
     }
 }

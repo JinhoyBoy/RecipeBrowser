@@ -46,8 +46,4 @@ class RecipeViewModel: ObservableObject {
     func stopListening() {
         databasePath?.removeAllObservers()
     }
-     
-    func fetchData() {
-        
-    }
 }
