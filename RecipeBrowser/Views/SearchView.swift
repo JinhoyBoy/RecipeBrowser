@@ -9,18 +9,17 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var searchText = ""
-    @State private var selectedIngredients = ["eggs", "tomato", "pasta"]
+    @State private var selectedIngredients = [String]()
     @StateObject private var viewModel = RecipeViewModel()
     var body: some View {
         VStack{
             NavigationStack {
                 List{
                     ForEach(searchResults, id: \.self) { ingredient in
-                        Text(ingredient)
+                        Button(ingredient){
+                            selectedIngredients.append(ingredient)
+                        }
                     }
-                    //                ForEach(allUniqueIngredients(), id: \.self) { ingredient in
-                    //                    Text(ingredient)
-                    //                }
                 }
                 .navigationTitle("Recipe Browser")
                 .onAppear{
@@ -40,7 +39,7 @@ struct SearchView: View {
                             .foregroundStyle(.white)
                         Spacer()
                         Button {
-                                    print("Image tapped!")
+                            selectedIngredients = selectedIngredients.filter { $0 != ingredient }
                                 } label: {
                                     Image(systemName: "minus.circle")
                                         .foregroundStyle(.white)
