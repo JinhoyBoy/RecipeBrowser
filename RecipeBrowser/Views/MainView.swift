@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject var selection = Selection()
     var body: some View {
         TabView {
             SearchView()
+                .environmentObject(selection)
                 .tabItem {
                     Label("Ingredients", systemImage: "carrot.fill")
                 }
-
             ContentView()
+                .environmentObject(selection)
                 .tabItem {
                     Label("Recipes", systemImage: "book.pages.fill")
                 }

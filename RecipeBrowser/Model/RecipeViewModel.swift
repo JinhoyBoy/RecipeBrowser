@@ -11,6 +11,7 @@ import FirebaseDatabase
 class RecipeViewModel: ObservableObject {
      
     @Published var recipes: [Recipe] = []
+
      
     private lazy var databasePath: DatabaseReference? = {
             let ref = Database.database().reference()
@@ -45,5 +46,22 @@ class RecipeViewModel: ObservableObject {
     
     func stopListening() {
         databasePath?.removeAllObservers()
+    }
+    
+    func allUniqueIngredients() -> [String] {
+        var allIngredients: [String] = []
+        for recipe in recipes {
+            allIngredients += recipe.ingredients.components(separatedBy: ",")
+        }
+        let uniqueIngredients = Array(Set(allIngredients.map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }))
+        var sortedIngredients = uniqueIngredients.sorted()
+        sortedIngredients = sortedIngredients.filter { !containsNumbers($0) && !containsUppercaseLetters($0) && !$0.isEmpty}
+        return sortedIngredients
+    }
+    private func containsNumbers(_ string: String) -> Bool {
+        return string.rangeOfCharacter(from: .decimalDigits) != nil
+    }
+    private func containsUppercaseLetters(_ string: String) -> Bool {
+        return string.rangeOfCharacter(from: .uppercaseLetters) != nil
     }
 }

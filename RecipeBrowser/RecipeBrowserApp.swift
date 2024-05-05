@@ -22,9 +22,12 @@ struct RecipeBrowserApp: App {
     init() {
       FirebaseApp.configure()
     }
+    
+    @StateObject var selection = Selection()
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(selection)
         }
     }
 }
