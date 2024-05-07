@@ -77,7 +77,7 @@ struct IngredientRow: View {
         .padding(10)
         .cornerRadius(16)
         .background(RoundedRectangle(cornerRadius: 16)
-                        .foregroundColor(.orange))
+                        .foregroundColor(.blue))
     }
 }
 

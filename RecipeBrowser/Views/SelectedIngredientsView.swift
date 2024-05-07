@@ -17,7 +17,7 @@ struct SelectedIngredientsView: View {
                 if !selectedIngredients.isEmpty{
                     Text("Your Ingredients:")
                         .bold()
-                        .foregroundStyle(.orange)
+                        .foregroundStyle(.blue)
                 }
                 ForEach(selectedIngredients, id: \.self) { ingredient in
                     IngredientRow(ingredient: ingredient) {

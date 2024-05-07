@@ -11,6 +11,7 @@ struct RecipeView: View {
     @StateObject private var viewModel = RecipeViewModel()
     @State private var selectedIngredients = [String]()
     @State private var filterIngredients: Set = [""]
+    @State private var selectedRecipe: Recipe?
     @EnvironmentObject private var selection: Selection
     var body: some View {
         NavigationView {
@@ -19,7 +20,11 @@ struct RecipeView: View {
                     Text("No ingredients selected, listing all recipes.")
                         .padding(.top, 5).font(.caption).foregroundStyle(.gray)
                     List(viewModel.recipes) { recipe in
-                        RecipeRow(recipe: recipe)
+                        Button(action: {
+                            selectedRecipe = recipe
+                        }) {
+                            RecipeRow(recipe: recipe)
+                        }
                     }
                 } else if (viewModel.recipes.filter { recipe in
                     containsFilterIngredients(recipe.ingredients)
@@ -29,7 +34,11 @@ struct RecipeView: View {
                     List(viewModel.recipes.filter { recipe in
                         containsFilterIngredientsExeptOne(recipe.ingredients)
                     }) { recipe in
-                        RecipeRow(recipe: recipe)
+                        Button(action: {
+                            selectedRecipe = recipe
+                        }) {
+                            RecipeRow(recipe: recipe)
+                        }
                     }
                 } else {
                     Text("Listing recipes with your Ingredients!")
@@ -37,7 +46,11 @@ struct RecipeView: View {
                     List(viewModel.recipes.filter { recipe in
                         containsFilterIngredients(recipe.ingredients)
                     }) { recipe in
-                        RecipeRow(recipe: recipe)
+                        Button(action: {
+                            selectedRecipe = recipe
+                        }) {
+                            RecipeRow(recipe: recipe)
+                        }
                     }
                 }
                 
@@ -52,7 +65,9 @@ struct RecipeView: View {
                 viewModel.stopListening()
             }
             .navigationTitle("Recipe Browser")
-            
+            .sheet(item: $selectedRecipe) { recipe in
+                RecipeDetail(recipe: recipe)
+            }
         }
     }
     
