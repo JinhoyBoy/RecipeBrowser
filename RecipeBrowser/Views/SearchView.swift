@@ -12,18 +12,21 @@ struct SearchView: View {
     @State private var selectedIngredients = [String]()
     @StateObject private var viewModel = RecipeViewModel()
     @EnvironmentObject private var selection: Selection
-
     var body: some View {
         VStack {
             NavigationView {
                 List {
                     ForEach(searchResults, id: \.self) { ingredient in
                         Button(ingredient) {
-                            addIngredient(ingredient)
+                            if selectedIngredients.contains(ingredient){
+
+                            } else {
+                                addIngredient(ingredient)
+                            }
                         }
                     }
                 }
-                .navigationTitle("Recipe Browser")
+                .navigationTitle("Ingredient Browser")
                 .onAppear {
                     selectedIngredients = selection.ingredients
                     viewModel.listentoRealtimeDatabase()
@@ -34,20 +37,8 @@ struct SearchView: View {
             }
             .searchable(text: $searchText)
             .autocapitalization(.none)
-
-            VStack {
-                Text("Your Ingredients:")
-                    .bold()
-                    .foregroundStyle(.orange)
-
-                ForEach(selectedIngredients, id: \.self) { ingredient in
-                    IngredientRow(ingredient: ingredient) {
-                        removeIngredient(ingredient)
-                    }
-                }
-                .padding(.horizontal, 70)
-            }
-            .padding(.bottom)
+            
+            SelectedIngredientsView(selectedIngredients: selectedIngredients, removeIngredient: removeIngredient)
         }
     }
 

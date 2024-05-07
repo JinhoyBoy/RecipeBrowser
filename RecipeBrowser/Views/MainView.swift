@@ -16,7 +16,7 @@ struct MainView: View {
                 .tabItem {
                     Label("Ingredients", systemImage: "carrot.fill")
                 }
-            ContentView()
+            RecipeView()
                 .environmentObject(selection)
                 .tabItem {
                     Label("Recipes", systemImage: "book.pages.fill")
