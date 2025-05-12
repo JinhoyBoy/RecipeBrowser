@@ -18,14 +18,12 @@ Users can search recipes and filter the recipes by ingredients.
 ## Screenshots
 ### Ingredient selection
 
-![App Screenshot](https://i.ibb.co/BTmx4Yy/Recipe.png)
+Search ingredients & Select ingredients
 
-- Search ingredients
-- Select ingredients
+![App Screenshot](https://i.ibb.co/BTmx4Yy/Recipe.png)
 
 ### Recipe selection
 
-![App Screenshot](https://i.ibb.co/92ghdbP/Ingredient-1.png)
+Search ingredients & Select ingredients
 
-- Search recipes
-- Select recipes
+![App Screenshot](https://i.ibb.co/92ghdbP/Ingredient-1.png)
