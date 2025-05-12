@@ -8,7 +8,7 @@ Users can search recipes and filter the recipes by ingredients.
 
 
 
-## Resources
+## Technologies
 
 **App:** Swift
 
