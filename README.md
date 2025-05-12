@@ -20,10 +20,10 @@ Users can search recipes and filter the recipes by ingredients.
 
 Search ingredients & Select ingredients
 
-![App Screenshot](https://i.ibb.co/BTmx4Yy/Recipe.png)
+![App Screenshot](./Ingredients..png)
 
 ### Recipe selection
 
 Search ingredients & Select ingredients
 
-![App Screenshot](https://i.ibb.co/92ghdbP/Ingredient-1.png)
+![App Screenshot](./Recipes.png)
