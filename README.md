@@ -20,6 +20,6 @@ Search ingredients & Select ingredients:
 
 ## Recipe selection
 
-Search recipes and click on them for a detailed view.
+Search recipes and click on them for a detailed view:
 
 ![App Screenshot](./Recipes.png)
